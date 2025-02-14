@@ -1,6 +1,16 @@
+import { createResizeObserver } from "./resizeObserver.js";
+
 gsap.registerPlugin(ScrollTrigger);
 
 function init() {
+  const scrollerElements = document.querySelectorAll(".scroller");
+
+  scrollerElements.forEach((scroller) => {
+    createResizeObserver(scroller, () => {
+      ScrollTrigger.refresh();
+    });
+  });
+
   const videoMask = document.querySelector(".video-mask");
   const successText = document.querySelector(".success-text");
   const pipeSymbol = document.querySelector(".pipe-symbol");
@@ -163,6 +173,41 @@ function init() {
     zIndex: 0,
     y: 50,
     stagger: 0.2,
+  });
+
+  // Outro animations
+  gsap.from(".outro-text h2", {
+    scrollTrigger: {
+      trigger: ".outro-content",
+      start: "top 80%",
+      toggleActions: "play none none reverse",
+    },
+    y: 50,
+    opacity: 0,
+    duration: 1,
+  });
+
+  gsap.from(".outro-text p", {
+    scrollTrigger: {
+      trigger: ".outro-content",
+      start: "top 80%",
+      toggleActions: "play none none reverse",
+    },
+    y: 30,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.2,
+  });
+
+  gsap.from(".social-links a", {
+    scrollTrigger: {
+      trigger: ".outro-content",
+      start: "top 90%",
+      toggleActions: "play none none reverse",
+    },
+    y: 20,
+    duration: 0.6,
+    stagger: 0.1,
   });
 }
 
