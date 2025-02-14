@@ -60,9 +60,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const cards = document.querySelectorAll(".card");
   cards.forEach((card, index) => {
     gsap.set(card, {
-      z: -500,
-      scale: 0.3,
+      z: -50000,
+      scale: 0,
     });
+  });
+
+  // Split text utility function
+  function splitText(element) {
+    const text = element.textContent;
+    element.textContent = "";
+    return [...text].map((char) => {
+      const span = document.createElement("span");
+      span.className = "char";
+      span.textContent = char;
+      element.appendChild(span);
+      return span;
+    });
+  }
+
+  // Split all title-3 text
+  document.querySelectorAll(".title-3").forEach((title) => {
+    splitText(title);
   });
 
   ScrollTrigger.create({
@@ -83,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const currentSpeed = Math.min(Math.abs(velocity / 500), maxOffset);
       const isAtEdge = self.progress <= 0 || self.progress >= 1;
 
-      document.querySelectorAll(".title").forEach((titleContainer) => {
+      document.querySelectorAll(".title").forEach((titleContainer, index) => {
         // Calculate element's center position relative to viewport
         const rect = titleContainer.getBoundingClientRect();
         const elementCenterX = rect.left + rect.width / 2;
@@ -105,13 +123,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const title1 = titleContainer.querySelector(".title-1");
         const title2 = titleContainer.querySelector(".title-2");
         const title3 = titleContainer.querySelector(".title-3");
+        const chars = [...title3.querySelectorAll(".char")]; // Convert NodeList to Array
 
-        // Apply opacity to all title elements
-        gsap.to([title1, title2, title3], {
+        // Apply opacity to only title1 and title2
+        gsap.to([title1, title2], {
           opacity: opacity,
           duration: 0.2,
           overwrite: "auto",
-          opacity: 0,
         });
 
         if (isAtEdge) {
@@ -142,6 +160,56 @@ document.addEventListener("DOMContentLoaded", () => {
           });
         }
 
+        // Match each title-3 with its corresponding snap point
+        const snapPoints = [];
+        const currentSnapPoint = snapPoints[index];
+        const isAtCurrentSnapPoint =
+          Math.abs(self.progress - currentSnapPoint) < 0.05;
+
+        // Debug logs
+        console.log(`Title ${index + 1}:`, {
+          progress: self.progress,
+          currentSnapPoint: snapPoints[index],
+          isAtCurrentSnapPoint:
+            Math.abs(self.progress - snapPoints[index]) < 0.05,
+          charsLength: chars.length,
+        });
+
+        // Simplified animation logic
+        if (Math.abs(self.progress - snapPoints[index]) < 0.05) {
+          console.log(`Activating title-3 at index ${index}`);
+
+          // First make visible
+          title3.style.visibility = "visible";
+          title3.style.opacity = "1";
+
+          // Then animate chars
+          gsap.to(chars, {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            stagger: 0.03,
+            ease: "back.out(1.7)",
+            overwrite: true,
+          });
+        } else {
+          console.log(`Deactivating title-3 at index ${index}`);
+
+          gsap.to(chars, {
+            opacity: 0,
+            y: 50,
+            duration: 0.3,
+            stagger: 0.02,
+            ease: "power2.in",
+            overwrite: true,
+            onComplete: () => {
+              title3.style.visibility = "hidden";
+              title3.style.opacity = "0";
+            },
+          });
+        }
+
+        // Keep title-3 centered
         gsap.set(title3, {
           xPercent: -50,
           x: 0,
@@ -172,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
     start: "bottom bottom",
     end: `+=${window.innerHeight * 5}px`,
     snap: {
-      snapTo: [0, 0.33, 0.67, 1],
+      snapTo: [],
       duration: 2,
       // ease: "power1.inOut",
       inertia: false,
@@ -180,21 +248,21 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-const tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".last-title",
-    start: "bottom bottom",
-    pin: true,
-    scrub: 1,
-    end: "top top",
-    markers: false,
-  },
-});
+// const tl = gsap.timeline({
+//   scrollTrigger: {
+//     trigger: ".last-title",
+//     start: "bottom bottom",
+//     pin: true,
+//     scrub: 1,
+//     end: "top top",
+//     markers: false,
+//   },
+// });
 
-tl.from(".outro", {
-  yPercent: -100,
-  ease: "none",
-});
+// tl.from(".outro", {
+//   yPercent: -100,
+//   ease: "none",
+// });
 
 gsap.delayedCall(0.1, () => {
   document.documentElement.style.overflowY = "hidden"; // Ensure no unwanted scroll
