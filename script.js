@@ -15,7 +15,7 @@ function init() {
   const successText = document.querySelector(".success-text");
   const pipeSymbol = document.querySelector(".pipe-symbol");
   const bottomText = document.querySelector(".bottom-text");
-  const heroImage = document.querySelector(".woman-image");
+  const heroImage = document.querySelector(".hero-image");
   const videoOverlay = document.querySelector(".video-overlay");
   const body = document.body;
   // const gradientBcg = document.querySelector(".gradient-overlay");
@@ -130,6 +130,9 @@ function init() {
       toggleActions: "play none none reverse",
     },
     opacity: 0,
+    y: -200,
+    duration: 0.35,
+    easeing: "power3.out",
   }),
     gsap.to(successText, {
       scrollTrigger: {
@@ -158,7 +161,7 @@ function init() {
       markers: false,
     },
     scrub: 1,
-    scale: 0.6,
+    scale: 0.7,
     easeing: "power3.out",
   });
 
@@ -171,7 +174,7 @@ function init() {
     },
     opacity: 1,
     zIndex: 0,
-    y: 50,
+    yPercent: -15,
     stagger: 0.2,
   });
 
