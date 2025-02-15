@@ -20,6 +20,7 @@ a:not(.button):not(.comment-reply-link):hover {
   );
   background: linear-gradient(to right, #ff8a00, var(--creamy-dark));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: none;
 }
@@ -412,7 +413,8 @@ time {
     opacity: 1;
   }
 
-  .scroller > svg {
+  /* .scroller > .scroller__bar { */
+  .scroller > .scroller__bar {
     position: absolute;
     top: 1rem;
     bottom: 1rem;
