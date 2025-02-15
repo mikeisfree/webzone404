@@ -118,51 +118,10 @@ b {
   align-items: center;
   justify-content: space-around;
   gap: 60%;
-  height: 16vh;
+  height: 20vh;
   font-family: "HelveticaNeueThin", sans-serif;
 }
 
-/* .cta button {
-  font-family: "HelveticaNeueThin", sans-serif;
-  text-transform: uppercase;
-  height: 50px;
-  width: 150px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin: 0;
-  position: relative;
-  background: #1b1b1b;
-  border: none;
-  border-radius: 9999px;
-  font-size: 1rem;
-  line-height: 0;
-  overflow: hidden;
-  z-index: 1;
-  color: #fff;
-}
-
-.cta button::after {
-  position: absolute;
-  content: "";
-  top: 97%;
-  left: 0;
-  height: 100%;
-  width: 0;
-  background: linear-gradient(
-    90deg,
-    var(--creamy-light),
-    var(--creamy-orange),
-    transparent
-  );
-  transition: width 0.3s ease-in-out;
-  box-shadow: 0 0 50px 0 var(--creamy-orange);
-  border-radius: 50%;
-}
-.cta button:hover::after {
-  width: 200%;
-} */
-
-/* From Uiverse.io by vikas7754 */
 .tooltip-container {
   --color: red;
   --border: rgba(255, 0, 0, 0.25);
@@ -208,15 +167,18 @@ b {
   display: block;
   position: relative;
 }
-.layer {
+
+.layerb {
   width: 70px;
   height: 70px;
   transition: transform 0.3s;
 }
-.icon:hover .layer {
+
+.icon:hover .layerb {
   transform: rotate(-35deg) skew(20deg);
 }
-.layer span {
+
+.layerb span {
   position: absolute;
   top: 0;
   left: 0;
@@ -232,7 +194,7 @@ b {
     5px 5px 15px rgba(0, 0, 0, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.05);
 }
 
-.tooltip-container:hover .layer span {
+.tooltip-container:hover .layerb span {
   border-radius: 10px;
   background: var(--color);
 }
@@ -241,15 +203,16 @@ b {
   fill: #fff;
 }
 
-.layer span,
+.layerb span,
 .text {
   color: var(--color);
   border-color: var(--color);
 }
 
-.icon:hover.layer span {
+.icon:hover.layerb span {
   box-shadow: -1px 1px 3px var(--color);
 }
+
 .icon .text {
   position: absolute;
   left: 50%;
@@ -259,27 +222,32 @@ b {
   transform: translateX(-50%);
   transition: bottom 0.3s ease, opacity 0.3s ease;
 }
+
 .icon:hover .text {
   bottom: -35px;
   opacity: 1;
 }
 
-.icon:hover .layer span:nth-child(1) {
+.icon:hover .layerb span:nth-child(1) {
   opacity: 0.2;
 }
-.icon:hover .layer span:nth-child(2) {
+
+.icon:hover .layerb span:nth-child(2) {
   opacity: 0.4;
   transform: translate(5px, -5px);
 }
-.icon:hover .layer span:nth-child(3) {
+
+.icon:hover .layerb span:nth-child(3) {
   opacity: 0.6;
   transform: translate(10px, -10px);
 }
-.icon:hover .layer span:nth-child(4) {
+
+.icon:hover .layerb span:nth-child(4) {
   opacity: 0.8;
   transform: translate(15px, -15px);
 }
-.icon:hover .layer span:nth-child(5) {
+
+.icon:hover .layerb span:nth-child(5) {
   opacity: 1;
   transform: translate(20px, -20px);
 }
@@ -287,10 +255,12 @@ b {
 .svg path {
   fill: var(--color);
 }
+
 .user {
   display: flex;
   gap: 10px;
 }
+
 .img {
   width: 50px;
   height: 50px;
@@ -303,17 +273,20 @@ b {
   justify-content: center;
   background: #fff;
 }
+
 .name {
   font-size: 17px;
   font-weight: 700;
   color: var(--creamy-light);
 }
+
 .details {
   display: flex;
   flex-direction: column;
   gap: 0;
   color: var(--color);
 }
+
 .about {
   color: var(--creamy-light);
   padding-top: 5px;
