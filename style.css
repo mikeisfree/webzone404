@@ -111,7 +111,6 @@ b {
 .cta {
   position: absolute;
   width: 100%;
-  height: max-content;
   z-index: 1000;
   bottom: 0;
   display: flex;
@@ -304,7 +303,7 @@ b {
 
 .video-wrapper {
   position: relative;
-  height: 85%;
+  height: 82%;
   width: 98%;
   overflow: hidden;
   padding-top: 1.5rem;
