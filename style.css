@@ -109,6 +109,7 @@ b {
 }
 
 .cta {
+  position: absolute;
   width: 100%;
   height: max-content;
   z-index: 1000;
@@ -118,7 +119,7 @@ b {
   align-items: center;
   justify-content: space-around;
   gap: 60%;
-  height: 20vh;
+  height: 12vh;
   font-family: "HelveticaNeueThin", sans-serif;
 }
 
