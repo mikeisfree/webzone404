@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="styleStars.css" />
     <link rel="stylesheet" href="newCSS.css" />
-    <!-- <link rel="stylesheet" href="https://unpkg.com/normalize.css" type="text/css" /> -->
+    <link rel="stylesheet" href="./svg-animation/svg-animation/src/svg.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/MotionPathPlugin.min.js"></script>
   </head>
   <body>
     <section class="wrapperSky">
@@ -17,6 +18,67 @@
       <div id="stars2"></div>
       <div id="stars3"></div>
     </section>
+    <div class="abs">
+        <svg
+        class="pipe-animation"
+          id="GJ_logo"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1000 4000"
+          preserveAspectRatio="xMidYMin meet"
+        >
+          <defs>
+            <!-- Gradient for neon effect -->
+            <linearGradient
+              id="pipe-gradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="0%"
+            >
+              <stop offset="0%" style="stop-color: #ff8a00; stop-opacity: 1" />
+              <stop
+                offset="100%"
+                style="stop-color: #c4471d; stop-opacity: 1"
+              />
+            </linearGradient>
+            <!-- Glow filter -->
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+              <feMerge>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+            <!-- 3D effect for pipe -->
+            <linearGradient id="pipe-shadow" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color: rgba(255, 138, 0, 0.8)" />
+              <stop offset="100%" style="stop-color: rgba(196, 71, 29, 0.2)" />
+            </linearGradient>
+          </defs>        
+          <path          
+            id="st0"
+            d="M500 300C800 500 800 600 500 800S200 1100 500 1300 800 1600 500 1800 200 2100 500 2300 800 2600 500 2800 200 3100 500 3300 500 3700 500 3900"
+            fill="none"
+            stroke="url(#pipe-gradient)"
+            filter="url(#glow)"
+            stroke-width="10"
+            stroke-linecap="round"
+          />
+
+          <!-- Moving bubble -->
+          <circle
+            id="moving-bubble"
+            r="15"
+      
+            cx="500" 
+            cy="300"
+          >
+          </circle>
+        </svg>
+      </div>
+    </div>
+    <!-- <div id="scrollElement"></div> -->
 
     <div class="zindex">
       <div id="video-container">
@@ -30,8 +92,6 @@
                 <h1>
                   creative <b>designer</b><br />
                   <b>app</b> developer
-                  <!-- Creative<br /><b>Designer</b><br />
-                  Developer -->
                 </h1>
                 <div class="overlay-inner">
                   <div class="overlay-p">
@@ -79,6 +139,7 @@
                     <span></span>
                     <span class="svg">
                       <svg
+                        class="svgScroller"
                         viewBox="0 -7 48 48"
                         version="1.1"
                         xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +163,10 @@
                             fill="none"
                             fill-rule="evenodd"
                           >
-                            <g id="Color-" transform="translate(-200.000000, -368.000000)">
+                            <g
+                              id="Color-"
+                              transform="translate(-200.000000, -368.000000)"
+                            >
                               <path
                                 d="M219.044,391.269916 L219.0425,377.687742 L232.0115,384.502244 L219.044,391.269916 Z M247.52,375.334163 C247.52,375.334163 247.0505,372.003199 245.612,370.536366 C243.7865,368.610299 241.7405,368.601235 240.803,368.489448 C234.086,368 224.0105,368 224.0105,368 L223.9895,368 C223.9895,368 213.914,368 207.197,368.489448 C206.258,368.601235 204.2135,368.610299 202.3865,370.536366 C200.948,372.003199 200.48,375.334163 200.48,375.334163 C200.48,375.334163 200,379.246723 200,383.157773 L200,386.82561 C200,390.73817 200.48,394.64922 200.48,394.64922 C200.48,394.64922 200.948,397.980184 202.3865,399.447016 C204.2135,401.373084 206.612,401.312658 207.68,401.513574 C211.52,401.885191 224,402 224,402 C224,402 234.086,401.984894 240.803,401.495446 C241.7405,401.382148 243.7865,401.373084 245.612,399.447016 C247.0505,397.980184 247.52,394.64922 247.52,394.64922 C247.52,394.64922 248,390.73817 248,386.82561 L248,383.157773 C248,379.246723 247.52,375.334163 247.52,375.334163 L247.52,375.334163 Z"
                                 id="Youtube"
@@ -117,28 +181,16 @@
                 </a>
               </div>
             </div>
-
-
-
           </div>
-
-          <!-- NEW ONE -->
-
-          <!-- /NEW ONE -->
         </div>
         <div class="bottom-section">
-          <!-- <div class="bottom-text">Continue Exploring</div> -->
-
-        
-
-
           <div class="scroller">
             <svg
               class="scroller__bar bar"
               viewBox="0 0 56 56"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path class="bar__thumb" fill="none" stroke-linecap="round" />
+              <path class="bar__thumb" stroke-width="4px" fill="none" stroke-linecap="round" />
               <path class="bar__track" fill="none" stroke-linecap="round" />
             </svg>
             <div>
@@ -151,48 +203,49 @@
               </header>
               <main>
                 <p>
-                  Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Suscipit
-                  in voluptatum, ducimus labore iste consectetur laboriosam officiis
-                  aliquid similique reprehenderit, consequatur distinctio consequuntur
-                  nam magnam blanditiis reiciendis eligendi laudantium a.
+                  Lorem, ipsum, dolor sit amet consectetur adipisicing elit.
+                  Suscipit in voluptatum, ducimus labore iste consectetur
+                  laboriosam officiis aliquid similique reprehenderit,
+                  consequatur distinctio consequuntur nam magnam blanditiis
+                  reiciendis eligendi laudantium a.
                 </p>
                 <p>
                   Dignissimos, nisi tenetur doloremque esse cum amet delectus
-                  cupiditate natus quo illum quisquam perspiciatis ipsa maiores aut
-                  soluta, facilis sunt rem eius. Alias, illum, cumque. Temporibus
-                  doloremque praesentium in, consectetur.
+                  cupiditate natus quo illum quisquam perspiciatis ipsa maiores
+                  aut soluta, facilis sunt rem eius. Alias, illum, cumque.
+                  Temporibus doloremque praesentium in, consectetur.
                 </p>
                 <p>
-                  Molestias voluptas architecto atque maiores, laboriosam, dolorem
-                  commodi autem, id, ipsa praesentium rerum inventore! Optio maiores
-                  nulla impedit, sapiente similique, voluptas placeat hic quas dicta a
-                  voluptate minima alias aliquam?
+                  Molestias voluptas architecto atque maiores, laboriosam,
+                  dolorem commodi autem, id, ipsa praesentium rerum inventore!
+                  Optio maiores nulla impedit, sapiente similique, voluptas
+                  placeat hic quas dicta a voluptate minima alias aliquam?
                 </p>
                 <img src="https://picsum.photos/1280/720?random=48" alt="" />
                 <p>
                   Suscipit repudiandae, consectetur ratione quo, ipsa inventore
-                  doloremque quibusdam sit iusto, obcaecati natus! Tempore, tenetur
-                  culpa, mollitia consequuntur necessitatibus minima aliquid in
-                  recusandae, exercitationem nulla voluptates atque quaerat,
-                  doloremque illum.
+                  doloremque quibusdam sit iusto, obcaecati natus! Tempore,
+                  tenetur culpa, mollitia consequuntur necessitatibus minima
+                  aliquid in recusandae, exercitationem nulla voluptates atque
+                  quaerat, doloremque illum.
                 </p>
                 <p>
-                  Quibusdam quas, soluta quisquam nobis porro odio sit, maxime libero,
-                  optio cumque, sint! Enim, atque, velit. Iste quisquam minus deleniti
-                  quasi saepe! Saepe assumenda iste accusantium rem, sunt repudiandae
-                  quae!
+                  Quibusdam quas, soluta quisquam nobis porro odio sit, maxime
+                  libero, optio cumque, sint! Enim, atque, velit. Iste quisquam
+                  minus deleniti quasi saepe! Saepe assumenda iste accusantium
+                  rem, sunt repudiandae quae!
                 </p>
                 <p>
-                  Mollitia quod fuga ex, consequatur saepe. Id laboriosam aspernatur
-                  iusto unde quo. Optio molestiae maxime officia blanditiis voluptate,
-                  quasi impedit aperiam corrupti nihil sit doloremque dolorem harum
-                  necessitatibus expedita laboriosam.
+                  Mollitia quod fuga ex, consequatur saepe. Id laboriosam
+                  aspernatur iusto unde quo. Optio molestiae maxime officia
+                  blanditiis voluptate, quasi impedit aperiam corrupti nihil sit
+                  doloremque dolorem harum necessitatibus expedita laboriosam.
                 </p>
                 <p>
-                  Deleniti molestiae maxime ullam officia natus, eaque nisi numquam,
-                  aliquam sapiente doloribus atque obcaecati illum vitae modi labore,
-                  eligendi hic illo earum doloremque. Deserunt ut aliquam a aliquid,
-                  dolores, magni.
+                  Deleniti molestiae maxime ullam officia natus, eaque nisi
+                  numquam, aliquam sapiente doloribus atque obcaecati illum
+                  vitae modi labore, eligendi hic illo earum doloremque.
+                  Deserunt ut aliquam a aliquid, dolores, magni.
                 </p>
                 <img src="https://picsum.photos/1280/720?random=36" alt="" />
                 <p>
@@ -204,16 +257,18 @@
                 <p>
                   Qui fugit rerum harum, odio eos esse dicta dolore atque itaque
                   voluptatem, doloribus ullam tempora quidem, accusantium quae,
-                  incidunt natus error fuga inventore expedita autem veniam in sequi
-                  iure. Officia.
+                  incidunt natus error fuga inventore expedita autem veniam in
+                  sequi iure. Officia.
                 </p>
                 <p>
                   Ab mollitia, illum. Iusto quam enim, in sapiente sed impedit
-                  nesciunt pariatur delectus asperiores officia hic ratione quasi eum
-                  quidem facere quaerat ducimus dolor totam omnis itaque sequi
-                  expedita optio?
+                  nesciunt pariatur delectus asperiores officia hic ratione
+                  quasi eum quidem facere quaerat ducimus dolor totam omnis
+                  itaque sequi expedita optio?
                 </p>
-                <p>Find out how to do things like this and more by subscribing.</p>
+                <p>
+                  Find out how to do things like this and more by subscribing.
+                </p>
               </main>
               <footer>
                 <p>The Craft of UI&nbsp;&copy;</p>
@@ -224,441 +279,721 @@
 
           <div class="popular-articles">
             <header class="popular-header header-card white-underline-links">
-               <h2 class="header-card-title">
-                  Recent <br>play <br>projects
-               </h2>
-               <p class="header-card-sponsor">All categories<br>
-                  <a href="#">check archive</a>
-               </p>
+              <h2 class="header-card-title">
+                Recent <br />play <br />projects
+              </h2>
+              <p class="header-card-sponsor">
+                All categories<br />
+                <a href="#">check archive</a>
+              </p>
             </header>
             <div class="mini-card-grid">
-               <article class="mini-card module module-article article" id="mini-post-278746">
-                  <header class="mini-article-card-header">
-                     <div class="mini-article-card-title">
-                        <div class="mini-article-subhead">
-                           Article
-                           <time datetime="2018-12-10">
-                           December 10, 2018        </time>
-                        </div>
-                        <h2 class="">
-                           <a href="https://css-tricks.com/an-introduction-and-guide-to-the-css-object-model-cssom/" class="article-card-header read-article">
-                           An Introduction and Guide to the CSS Object Model (CSSOM)        </a>
-                        </h2>
-                     </div>
-                  </header>
-                  <div class="mini-article-meta">
-                     <div class="mini-article-byline">
-                        <div class="author-avatar">
-                           <a class="author-name" href="https://css-tricks.com/author/lazaris/">
-                           <img alt="" src="https://secure.gravatar.com/avatar/b8eb0184e62e8a6e71a2d1d7be558248?s=80&amp;d=retro&amp;r=pg" srcset="https://secure.gravatar.com/avatar/b8eb0184e62e8a6e71a2d1d7be558248?s=160&amp;d=retro&amp;r=pg 2x" class="avatar avatar-80 photo" height="80" width="80">        </a>
-                           <svg class="half-circle" width="80px" height="80px">
-                              <use xlink:href="#half-circle"></use>
-                           </svg>
-                        </div>
-                        <div class="author-name-area">
-                           <div class="author-name-prefix">
-                              Author
-                           </div>
-                           <a class="author-name" href="https://css-tricks.com/author/lazaris/">
-                           Louis Lazaris        </a>
-                        </div>
-                     </div>
-                     <div class="tags">
-                        <a href="https://css-tricks.com/tag/cssom/" rel="tag">CSSOM</a>      
-                     </div>
+              <article
+                class="mini-card module module-article article"
+                id="mini-post-278746"
+              >
+                <header class="mini-article-card-header">
+                  <div class="mini-article-card-title">
+                    <div class="mini-article-subhead">
+                      Article
+                      <time datetime="2018-12-10"> December 10, 2018 </time>
+                    </div>
+                    <h2 class="">
+                      <a
+                        href="https://css-tricks.com/an-introduction-and-guide-to-the-css-object-model-cssom/"
+                        class="article-card-header read-article"
+                      >
+                        An Introduction and Guide to the CSS Object Model
+                        (CSSOM)
+                      </a>
+                    </h2>
                   </div>
-               </article>
-               <article class="mini-card module module-article article" id="mini-post-280317">
-                  <header class="mini-article-card-header">
-                     <div class="mini-article-card-title">
-                        <div class="mini-article-subhead">
-                           Article
-                           <time datetime="2018-12-21">
-                           December 21, 2018        </time>
-                        </div>
-                        <h2 class="">
-                           <a href="https://css-tricks.com/animating-between-views-in-react/" class="article-card-header read-article">
-                           Animating Between Views in React        </a>
-                        </h2>
-                     </div>
-                  </header>
-                  <div class="mini-article-meta">
-                     <div class="mini-article-byline">
-                        <div class="author-avatar">
-                           <a class="author-name" href="https://css-tricks.com/author/jmenichelli/">
-                           <img alt="" src="https://secure.gravatar.com/avatar/802b096bc7cef6843db036595503b559?s=80&amp;d=retro&amp;r=pg" srcset="https://secure.gravatar.com/avatar/802b096bc7cef6843db036595503b559?s=160&amp;d=retro&amp;r=pg 2x" class="avatar avatar-80 photo" height="80" width="80">        </a>
-                           <svg class="half-circle" width="80px" height="80px">
-                              <use xlink:href="#half-circle"></use>
-                           </svg>
-                        </div>
-                        <div class="author-name-area">
-                           <div class="author-name-prefix">
-                              Author
-                           </div>
-                           <a class="author-name" href="https://css-tricks.com/author/jmenichelli/">
-                           Jeremias Menichelli        </a>
-                        </div>
-                     </div>
-                     <div class="tags">
-                        <a href="https://css-tricks.com/tag/animating-react/" rel="tag">animating react</a> <a href="https://css-tricks.com/tag/react/" rel="tag">react</a>      
-                     </div>
+                </header>
+                <div class="mini-article-meta">
+                  <div class="mini-article-byline">
+                    <div class="author-avatar">
+                      <a
+                        class="author-name"
+                        href="https://css-tricks.com/author/lazaris/"
+                      >
+                        <img
+                          alt=""
+                          src="https://secure.gravatar.com/avatar/b8eb0184e62e8a6e71a2d1d7be558248?s=80&amp;d=retro&amp;r=pg"
+                          srcset="
+                            https://secure.gravatar.com/avatar/b8eb0184e62e8a6e71a2d1d7be558248?s=160&amp;d=retro&amp;r=pg 2x
+                          "
+                          class="avatar avatar-80 photo"
+                          height="80"
+                          width="80"
+                        />
+                      </a>
+                      <!-- <svg class="half-circle" width="80px" height="80px">
+                        <use xlink:href="#half-circle"></use>
+                      </svg> -->
+                    </div>
+                    <div class="author-name-area">
+                      <div class="author-name-prefix">Author</div>
+                      <a
+                        class="author-name"
+                        href="https://css-tricks.com/author/lazaris/"
+                      >
+                        Louis Lazaris
+                      </a>
+                    </div>
                   </div>
-               </article>
-               <article class="mini-card module module-article article" id="mini-post-279638">
-                  <header class="mini-article-card-header">
-                     <div class="mini-article-card-title">
-                        <div class="mini-article-subhead">
-                           Article
-                           <time datetime="2018-12-20">
-                           December 20, 2018        </time>
-                        </div>
-                        <h2 class="">
-                           <a href="https://css-tricks.com/regarding-csss-global-scope/" class="article-card-header read-article">
-                           Regarding CSS’s Global Scope        </a>
-                        </h2>
-                     </div>
-                  </header>
-                  <div class="mini-article-meta">
-                     <div class="mini-article-byline">
-                        <div class="author-avatar">
-                           <a class="author-name" href="https://css-tricks.com/author/chriscoyier/">
-                           <img alt="" src="https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=80&amp;d=retro&amp;r=pg" srcset="https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=160&amp;d=retro&amp;r=pg 2x" class="avatar avatar-80 photo" height="80" width="80">        </a>
-                           <svg class="half-circle" width="80px" height="80px">
-                              <use xlink:href="#half-circle"></use>
-                           </svg>
-                        </div>
-                        <div class="author-name-area">
-                           <div class="author-name-prefix">
-                              Author
-                           </div>
-                           <a class="author-name" href="https://css-tricks.com/author/chriscoyier/">
-                           Chris Coyier        </a>
-                        </div>
-                     </div>
-                     <div class="tags">
-                        <a href="https://css-tricks.com/tag/css-in-js/" rel="tag">css-in-js</a> <a href="https://css-tricks.com/tag/global-scope/" rel="tag">global scope</a>      
-                     </div>
+                  <div class="tags">
+                    <a href="https://css-tricks.com/tag/cssom/" rel="tag"
+                      >CSSOM</a
+                    >
                   </div>
-               </article>
-               <article class="mini-card module module-article article" id="mini-post-279952">
-                  <header class="mini-article-card-header">
-                     <div class="mini-article-card-title">
-                        <div class="mini-article-subhead">
-                           Article
-                           <time datetime="2018-12-06">
-                           December 6, 2018        </time>
-                        </div>
-                        <h2 class="">
-                           <a href="https://css-tricks.com/browser-diversity-commentary-regarding-the-edge-news/" class="article-card-header read-article">
-                           Browser Diversity Commentary, Regarding the Edge News        </a>
-                        </h2>
-                     </div>
-                  </header>
-                  <div class="mini-article-meta">
-                     <div class="mini-article-byline">
-                        <div class="author-avatar">
-                           <a class="author-name" href="https://css-tricks.com/author/chriscoyier/">
-                           <img alt="" src="https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=80&amp;d=retro&amp;r=pg" srcset="https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=160&amp;d=retro&amp;r=pg 2x" class="avatar avatar-80 photo" height="80" width="80">        </a>
-                           <svg class="half-circle" width="80px" height="80px">
-                              <use xlink:href="#half-circle"></use>
-                           </svg>
-                        </div>
-                        <div class="author-name-area">
-                           <div class="author-name-prefix">
-                              Author
-                           </div>
-                           <a class="author-name" href="https://css-tricks.com/author/chriscoyier/">
-                           Chris Coyier        </a>
-                        </div>
-                     </div>
-                     <div class="tags">
-                        <a href="https://css-tricks.com/tag/browser/" rel="tag">browser</a> <a href="https://css-tricks.com/tag/edge/" rel="tag">edge</a>      
-                     </div>
+                </div>
+              </article>
+              <article
+                class="mini-card module module-article article"
+                id="mini-post-280317"
+              >
+                <header class="mini-article-card-header">
+                  <div class="mini-article-card-title">
+                    <div class="mini-article-subhead">
+                      Article
+                      <time datetime="2018-12-21"> December 21, 2018 </time>
+                    </div>
+                    <h2 class="">
+                      <a
+                        href="https://css-tricks.com/animating-between-views-in-react/"
+                        class="article-card-header read-article"
+                      >
+                        Animating Between Views in React
+                      </a>
+                    </h2>
                   </div>
-               </article>
-               <article class="mini-card module module-article article" id="mini-post-278559">
-                  <header class="mini-article-card-header">
-                     <div class="mini-article-card-title">
-                        <div class="mini-article-subhead">
-                           Article
-                           <time datetime="2018-12-07">
-                           December 7, 2018        </time>
-                        </div>
-                        <h2 class="">
-                           <a href="https://css-tricks.com/what-do-you-name-color-variables/" class="article-card-header read-article">
-                           What do you name color variables?        </a>
-                        </h2>
-                     </div>
-                  </header>
-                  <div class="mini-article-meta">
-                     <div class="mini-article-byline">
-                        <div class="author-avatar">
-                           <a class="author-name" href="https://css-tricks.com/author/chriscoyier/">
-                           <img alt="" src="https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=80&amp;d=retro&amp;r=pg" srcset="https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=160&amp;d=retro&amp;r=pg 2x" class="avatar avatar-80 photo" height="80" width="80">        </a>
-                           <svg class="half-circle" width="80px" height="80px">
-                              <use xlink:href="#half-circle"></use>
-                           </svg>
-                        </div>
-                        <div class="author-name-area">
-                           <div class="author-name-prefix">
-                              Author
-                           </div>
-                           <a class="author-name" href="https://css-tricks.com/author/chriscoyier/">
-                           Chris Coyier        </a>
-                        </div>
-                     </div>
-                     <div class="tags">
-                        <a href="https://css-tricks.com/tag/color/" rel="tag">color</a> <a href="https://css-tricks.com/tag/variables/" rel="tag">variables</a>      
-                     </div>
+                </header>
+                <div class="mini-article-meta">
+                  <div class="mini-article-byline">
+                    <div class="author-avatar">
+                      <a
+                        class="author-name"
+                        href="https://css-tricks.com/author/jmenichelli/"
+                      >
+                        <img
+                          alt=""
+                          src="https://secure.gravatar.com/avatar/802b096bc7cef6843db036595503b559?s=80&amp;d=retro&amp;r=pg"
+                          srcset="
+                            https://secure.gravatar.com/avatar/802b096bc7cef6843db036595503b559?s=160&amp;d=retro&amp;r=pg 2x
+                          "
+                          class="avatar avatar-80 photo"
+                          height="80"
+                          width="80"
+                        />
+                      </a>
+                      <!-- <svg class="half-circle" width="80px" height="80px">
+                        <use xlink:href="#half-circle"></use>
+                      </svg> -->
+                    </div>
+                    <div class="author-name-area">
+                      <div class="author-name-prefix">Author</div>
+                      <a
+                        class="author-name"
+                        href="https://css-tricks.com/author/jmenichelli/"
+                      >
+                        Jeremias Menichelli
+                      </a>
+                    </div>
                   </div>
-               </article>
-               <article class="mini-card module module-article article" id="mini-post-280335">
-                  <header class="mini-article-card-header">
-                     <div class="mini-article-card-title">
-                        <div class="mini-article-subhead">
-                           Article
-                           <time datetime="2018-12-20">
-                           December 20, 2018        </time>
-                        </div>
-                        <h2 class="">
-                           <a href="https://css-tricks.com/the-fragmented-but-evolving-state-of-css-in-js/" class="article-card-header read-article">
-                           The Fragmented, But Evolving State of CSS-in-JS        </a>
-                        </h2>
-                     </div>
-                  </header>
-                  <div class="mini-article-meta">
-                     <div class="mini-article-byline">
-                        <div class="author-avatar">
-                           <a class="author-name" href="https://css-tricks.com/author/olliew/">
-                           <img alt="" src="https://secure.gravatar.com/avatar/7b27d41bc94bc689f23c33aa62157dcb?s=80&amp;d=retro&amp;r=pg" srcset="https://secure.gravatar.com/avatar/7b27d41bc94bc689f23c33aa62157dcb?s=160&amp;d=retro&amp;r=pg 2x" class="avatar avatar-80 photo" height="80" width="80">        </a>
-                           <svg class="half-circle" width="80px" height="80px">
-                              <use xlink:href="#half-circle"></use>
-                           </svg>
-                        </div>
-                        <div class="author-name-area">
-                           <div class="author-name-prefix">
-                              Author
-                           </div>
-                           <a class="author-name" href="https://css-tricks.com/author/olliew/">
-                           Ollie Williams        </a>
-                        </div>
-                     </div>
-                     <div class="tags">
-                        <a href="https://css-tricks.com/tag/css-in-js/" rel="tag">css-in-js</a> <a href="https://css-tricks.com/tag/emotion/" rel="tag">emotion</a> <a href="https://css-tricks.com/tag/styled-components/" rel="tag">styled components</a>      
-                     </div>
+                  <div class="tags">
+                    <a
+                      href="https://css-tricks.com/tag/animating-react/"
+                      rel="tag"
+                      >animating react</a
+                    >
+                    <a href="https://css-tricks.com/tag/react/" rel="tag"
+                      >react</a
+                    >
                   </div>
-               </article>
-               <article class="mini-card module module-article article" id="mini-post-279313">
-                  <header class="mini-article-card-header">
-                     <div class="mini-article-card-title">
-                        <div class="mini-article-subhead">
-                           Article
-                           <time datetime="2018-12-12">
-                           December 12, 2018        </time>
-                        </div>
-                        <h2 class="">
-                           <a href="https://css-tricks.com/keep-math-in-the-css/" class="article-card-header read-article">
-                           Keep Math in the CSS        </a>
-                        </h2>
-                     </div>
-                  </header>
-                  <div class="mini-article-meta">
-                     <div class="mini-article-byline">
-                        <div class="author-avatar">
-                           <a class="author-name" href="https://css-tricks.com/author/chriscoyier/">
-                           <img alt="" src="https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=80&amp;d=retro&amp;r=pg" srcset="https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=160&amp;d=retro&amp;r=pg 2x" class="avatar avatar-80 photo" height="80" width="80">        </a>
-                           <svg class="half-circle" width="80px" height="80px">
-                              <use xlink:href="#half-circle"></use>
-                           </svg>
-                        </div>
-                        <div class="author-name-area">
-                           <div class="author-name-prefix">
-                              Author
-                           </div>
-                           <a class="author-name" href="https://css-tricks.com/author/chriscoyier/">
-                           Chris Coyier        </a>
-                        </div>
-                     </div>
-                     <div class="tags">
-                        <a href="https://css-tricks.com/tag/custom-properties/" rel="tag">custom properties</a> <a href="https://css-tricks.com/tag/math/" rel="tag">math</a>      
-                     </div>
+                </div>
+              </article>
+              <article
+                class="mini-card module module-article article"
+                id="mini-post-279638"
+              >
+                <header class="mini-article-card-header">
+                  <div class="mini-article-card-title">
+                    <div class="mini-article-subhead">
+                      Article
+                      <time datetime="2018-12-20"> December 20, 2018 </time>
+                    </div>
+                    <h2 class="">
+                      <a
+                        href="https://css-tricks.com/regarding-csss-global-scope/"
+                        class="article-card-header read-article"
+                      >
+                        Regarding CSS’s Global Scope
+                      </a>
+                    </h2>
                   </div>
-               </article>
-               <article class="mini-card module module-article article" id="mini-post-279440">
-                  <header class="mini-article-card-header">
-                     <div class="mini-article-card-title">
-                        <div class="mini-article-subhead">
-                           Article
-                           <time datetime="2018-12-05">
-                           December 5, 2018        </time>
-                        </div>
-                        <h2 class="">
-                           <a href="https://css-tricks.com/the-all-powerful-front-end-developer/" class="article-card-header read-article">
-                           The All Powerful Front-End Developer        </a>
-                        </h2>
-                     </div>
-                  </header>
-                  <div class="mini-article-meta">
-                     <div class="mini-article-byline">
-                        <div class="author-avatar">
-                           <a class="author-name" href="https://css-tricks.com/author/chriscoyier/">
-                           <img alt="" src="https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=80&amp;d=retro&amp;r=pg" srcset="https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=160&amp;d=retro&amp;r=pg 2x" class="avatar avatar-80 photo" height="80" width="80">        </a>
-                           <svg class="half-circle" width="80px" height="80px">
-                              <use xlink:href="#half-circle"></use>
-                           </svg>
-                        </div>
-                        <div class="author-name-area">
-                           <div class="author-name-prefix">
-                              Author
-                           </div>
-                           <a class="author-name" href="https://css-tricks.com/author/chriscoyier/">
-                           Chris Coyier        </a>
-                        </div>
-                     </div>
-                     <div class="tags">
-                        <a href="https://css-tricks.com/tag/conference-talk/" rel="tag">conference talk</a>      
-                     </div>
+                </header>
+                <div class="mini-article-meta">
+                  <div class="mini-article-byline">
+                    <div class="author-avatar">
+                      <a
+                        class="author-name"
+                        href="https://css-tricks.com/author/chriscoyier/"
+                      >
+                        <img
+                          alt=""
+                          src="https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=80&amp;d=retro&amp;r=pg"
+                          srcset="
+                            https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=160&amp;d=retro&amp;r=pg 2x
+                          "
+                          class="avatar avatar-80 photo"
+                          height="80"
+                          width="80"
+                        />
+                      </a>
+                      <!-- <svg class="half-circle" width="80px" height="80px">
+                        <use xlink:href="#half-circle"></use>
+                      </svg> -->
+                    </div>
+                    <div class="author-name-area">
+                      <div class="author-name-prefix">Author</div>
+                      <a
+                        class="author-name"
+                        href="https://css-tricks.com/author/chriscoyier/"
+                      >
+                        Chris Coyier
+                      </a>
+                    </div>
                   </div>
-               </article>
-               <article class="mini-card module module-article article" id="mini-post-278812">
-                  <header class="mini-article-card-header">
-                     <div class="mini-article-card-title">
-                        <div class="mini-article-subhead">
-                           Article
-                           <time datetime="2018-11-23">
-                           November 23, 2018        </time>
-                        </div>
-                        <h2 class="">
-                           <a href="https://css-tricks.com/the-current-state-of-styling-scrollbars/" class="article-card-header read-article">
-                           The Current State of Styling Scrollbars        </a>
-                        </h2>
-                     </div>
-                  </header>
-                  <div class="mini-article-meta">
-                     <div class="mini-article-byline">
-                        <div class="author-avatar">
-                           <a class="author-name" href="https://css-tricks.com/author/chriscoyier/">
-                           <img alt="" src="https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=80&amp;d=retro&amp;r=pg" srcset="https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=160&amp;d=retro&amp;r=pg 2x" class="avatar avatar-80 photo" height="80" width="80">        </a>
-                           <svg class="half-circle" width="80px" height="80px">
-                              <use xlink:href="#half-circle"></use>
-                           </svg>
-                        </div>
-                        <div class="author-name-area">
-                           <div class="author-name-prefix">
-                              Author
-                           </div>
-                           <a class="author-name" href="https://css-tricks.com/author/chriscoyier/">
-                           Chris Coyier        </a>
-                        </div>
-                     </div>
-                     <div class="tags">
-                        <a href="https://css-tricks.com/tag/scrollbars/" rel="tag">scrollbars</a>      
-                     </div>
+                  <div class="tags">
+                    <a href="https://css-tricks.com/tag/css-in-js/" rel="tag"
+                      >css-in-js</a
+                    >
+                    <a href="https://css-tricks.com/tag/global-scope/" rel="tag"
+                      >global scope</a
+                    >
                   </div>
-               </article>
-               <article class="mini-card module module-article article" id="mini-post-278949">
-                  <header class="mini-article-card-header">
-                     <div class="mini-article-card-title">
-                        <div class="mini-article-subhead">
-                           Article
-                           <time datetime="2018-11-28">
-                           November 28, 2018        </time>
-                        </div>
-                        <h2 class="">
-                           <a href="https://css-tricks.com/front-end-developers-have-to-manage-the-loading-experience/" class="article-card-header read-article">
-                           Front-End Developers Have to Manage the Loading Experience        </a>
-                        </h2>
-                     </div>
-                  </header>
-                  <div class="mini-article-meta">
-                     <div class="mini-article-byline">
-                        <div class="author-avatar">
-                           <a class="author-name" href="https://css-tricks.com/author/chriscoyier/">
-                           <img alt="" src="https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=80&amp;d=retro&amp;r=pg" srcset="https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=160&amp;d=retro&amp;r=pg 2x" class="avatar avatar-80 photo" height="80" width="80">        </a>
-                           <svg class="half-circle" width="80px" height="80px">
-                              <use xlink:href="#half-circle"></use>
-                           </svg>
-                        </div>
-                        <div class="author-name-area">
-                           <div class="author-name-prefix">
-                              Author
-                           </div>
-                           <a class="author-name" href="https://css-tricks.com/author/chriscoyier/">
-                           Chris Coyier        </a>
-                        </div>
-                     </div>
-                     <div class="tags">
-                        <a href="https://css-tricks.com/tag/performance/" rel="tag">performance</a>      
-                     </div>
+                </div>
+              </article>
+              <article
+                class="mini-card module module-article article"
+                id="mini-post-279952"
+              >
+                <header class="mini-article-card-header">
+                  <div class="mini-article-card-title">
+                    <div class="mini-article-subhead">
+                      Article
+                      <time datetime="2018-12-06"> December 6, 2018 </time>
+                    </div>
+                    <h2 class="">
+                      <a
+                        href="https://css-tricks.com/browser-diversity-commentary-regarding-the-edge-news/"
+                        class="article-card-header read-article"
+                      >
+                        Browser Diversity Commentary, Regarding the Edge News
+                      </a>
+                    </h2>
                   </div>
-               </article>
+                </header>
+                <div class="mini-article-meta">
+                  <div class="mini-article-byline">
+                    <div class="author-avatar">
+                      <a
+                        class="author-name"
+                        href="https://css-tricks.com/author/chriscoyier/"
+                      >
+                        <img
+                          alt=""
+                          src="https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=80&amp;d=retro&amp;r=pg"
+                          srcset="
+                            https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=160&amp;d=retro&amp;r=pg 2x
+                          "
+                          class="avatar avatar-80 photo"
+                          height="80"
+                          width="80"
+                        />
+                      </a>
+                      <!-- <svg class="half-circle" width="80px" height="80px">
+                        <use xlink:href="#half-circle"></use>
+                      </svg> -->
+                    </div>
+                    <div class="author-name-area">
+                      <div class="author-name-prefix">Author</div>
+                      <a
+                        class="author-name"
+                        href="https://css-tricks.com/author/chriscoyier/"
+                      >
+                        Chris Coyier
+                      </a>
+                    </div>
+                  </div>
+                  <div class="tags">
+                    <a href="https://css-tricks.com/tag/browser/" rel="tag"
+                      >browser</a
+                    >
+                    <a href="https://css-tricks.com/tag/edge/" rel="tag"
+                      >edge</a
+                    >
+                  </div>
+                </div>
+              </article>
+              <article
+                class="mini-card module module-article article"
+                id="mini-post-278559"
+              >
+                <header class="mini-article-card-header">
+                  <div class="mini-article-card-title">
+                    <div class="mini-article-subhead">
+                      Article
+                      <time datetime="2018-12-07"> December 7, 2018 </time>
+                    </div>
+                    <h2 class="">
+                      <a
+                        href="https://css-tricks.com/what-do-you-name-color-variables/"
+                        class="article-card-header read-article"
+                      >
+                        What do you name color variables?
+                      </a>
+                    </h2>
+                  </div>
+                </header>
+                <div class="mini-article-meta">
+                  <div class="mini-article-byline">
+                    <div class="author-avatar">
+                      <a
+                        class="author-name"
+                        href="https://css-tricks.com/author/chriscoyier/"
+                      >
+                        <img
+                          alt=""
+                          src="https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=80&amp;d=retro&amp;r=pg"
+                          srcset="
+                            https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=160&amp;d=retro&amp;r=pg 2x
+                          "
+                          class="avatar avatar-80 photo"
+                          height="80"
+                          width="80"
+                        />
+                      </a>
+                      <!-- <svg class="half-circle" width="80px" height="80px">
+                        <use xlink:href="#half-circle"></use>
+                      </svg> -->
+                    </div>
+                    <div class="author-name-area">
+                      <div class="author-name-prefix">Author</div>
+                      <a
+                        class="author-name"
+                        href="https://css-tricks.com/author/chriscoyier/"
+                      >
+                        Chris Coyier
+                      </a>
+                    </div>
+                  </div>
+                  <div class="tags">
+                    <a href="https://css-tricks.com/tag/color/" rel="tag"
+                      >color</a
+                    >
+                    <a href="https://css-tricks.com/tag/variables/" rel="tag"
+                      >variables</a
+                    >
+                  </div>
+                </div>
+              </article>
+              <article
+                class="mini-card module module-article article"
+                id="mini-post-280335"
+              >
+                <header class="mini-article-card-header">
+                  <div class="mini-article-card-title">
+                    <div class="mini-article-subhead">
+                      Article
+                      <time datetime="2018-12-20"> December 20, 2018 </time>
+                    </div>
+                    <h2 class="">
+                      <a
+                        href="https://css-tricks.com/the-fragmented-but-evolving-state-of-css-in-js/"
+                        class="article-card-header read-article"
+                      >
+                        The Fragmented, But Evolving State of CSS-in-JS
+                      </a>
+                    </h2>
+                  </div>
+                </header>
+                <div class="mini-article-meta">
+                  <div class="mini-article-byline">
+                    <div class="author-avatar">
+                      <a
+                        class="author-name"
+                        href="https://css-tricks.com/author/olliew/"
+                      >
+                        <img
+                          alt=""
+                          src="https://secure.gravatar.com/avatar/7b27d41bc94bc689f23c33aa62157dcb?s=80&amp;d=retro&amp;r=pg"
+                          srcset="
+                            https://secure.gravatar.com/avatar/7b27d41bc94bc689f23c33aa62157dcb?s=160&amp;d=retro&amp;r=pg 2x
+                          "
+                          class="avatar avatar-80 photo"
+                          height="80"
+                          width="80"
+                        />
+                      </a>
+                      <!-- <svg class="half-circle" width="80px" height="80px">
+                        <use xlink:href="#half-circle"></use>
+                      </svg> -->
+                    </div>
+                    <div class="author-name-area">
+                      <div class="author-name-prefix">Author</div>
+                      <a
+                        class="author-name"
+                        href="https://css-tricks.com/author/olliew/"
+                      >
+                        Ollie Williams
+                      </a>
+                    </div>
+                  </div>
+                  <div class="tags">
+                    <a href="https://css-tricks.com/tag/css-in-js/" rel="tag"
+                      >css-in-js</a
+                    >
+                    <a href="https://css-tricks.com/tag/emotion/" rel="tag"
+                      >emotion</a
+                    >
+                    <a
+                      href="https://css-tricks.com/tag/styled-components/"
+                      rel="tag"
+                      >styled components</a
+                    >
+                  </div>
+                </div>
+              </article>
+              <article
+                class="mini-card module module-article article"
+                id="mini-post-279313"
+              >
+                <header class="mini-article-card-header">
+                  <div class="mini-article-card-title">
+                    <div class="mini-article-subhead">
+                      Article
+                      <time datetime="2018-12-12"> December 12, 2018 </time>
+                    </div>
+                    <h2 class="">
+                      <a
+                        href="https://css-tricks.com/keep-math-in-the-css/"
+                        class="article-card-header read-article"
+                      >
+                        Keep Math in the CSS
+                      </a>
+                    </h2>
+                  </div>
+                </header>
+                <div class="mini-article-meta">
+                  <div class="mini-article-byline">
+                    <div class="author-avatar">
+                      <a
+                        class="author-name"
+                        href="https://css-tricks.com/author/chriscoyier/"
+                      >
+                        <img
+                          alt=""
+                          src="https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=80&amp;d=retro&amp;r=pg"
+                          srcset="
+                            https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=160&amp;d=retro&amp;r=pg 2x
+                          "
+                          class="avatar avatar-80 photo"
+                          height="80"
+                          width="80"
+                        />
+                      </a>
+                      <!-- <svg class="half-circle" width="80px" height="80px">
+                        <use xlink:href="#half-circle"></use>
+                      </svg> -->
+                    </div>
+                    <div class="author-name-area">
+                      <div class="author-name-prefix">Author</div>
+                      <a
+                        class="author-name"
+                        href="https://css-tricks.com/author/chriscoyier/"
+                      >
+                        Chris Coyier
+                      </a>
+                    </div>
+                  </div>
+                  <div class="tags">
+                    <a
+                      href="https://css-tricks.com/tag/custom-properties/"
+                      rel="tag"
+                      >custom properties</a
+                    >
+                    <a href="https://css-tricks.com/tag/math/" rel="tag"
+                      >math</a
+                    >
+                  </div>
+                </div>
+              </article>
+              <article
+                class="mini-card module module-article article"
+                id="mini-post-279440"
+              >
+                <header class="mini-article-card-header">
+                  <div class="mini-article-card-title">
+                    <div class="mini-article-subhead">
+                      Article
+                      <time datetime="2018-12-05"> December 5, 2018 </time>
+                    </div>
+                    <h2 class="">
+                      <a
+                        href="https://css-tricks.com/the-all-powerful-front-end-developer/"
+                        class="article-card-header read-article"
+                      >
+                        The All Powerful Front-End Developer
+                      </a>
+                    </h2>
+                  </div>
+                </header>
+                <div class="mini-article-meta">
+                  <div class="mini-article-byline">
+                    <div class="author-avatar">
+                      <a
+                        class="author-name"
+                        href="https://css-tricks.com/author/chriscoyier/"
+                      >
+                        <img
+                          alt=""
+                          src="https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=80&amp;d=retro&amp;r=pg"
+                          srcset="
+                            https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=160&amp;d=retro&amp;r=pg 2x
+                          "
+                          class="avatar avatar-80 photo"
+                          height="80"
+                          width="80"
+                        />
+                      </a>
+                      <!-- <svg class="half-circle" width="80px" height="80px">
+                        <use xlink:href="#half-circle"></use>
+                      </svg> -->
+                    </div>
+                    <div class="author-name-area">
+                      <div class="author-name-prefix">Author</div>
+                      <a
+                        class="author-name"
+                        href="https://css-tricks.com/author/chriscoyier/"
+                      >
+                        Chris Coyier
+                      </a>
+                    </div>
+                  </div>
+                  <div class="tags">
+                    <a
+                      href="https://css-tricks.com/tag/conference-talk/"
+                      rel="tag"
+                      >conference talk</a
+                    >
+                  </div>
+                </div>
+              </article>
+              <article
+                class="mini-card module module-article article"
+                id="mini-post-278812"
+              >
+                <header class="mini-article-card-header">
+                  <div class="mini-article-card-title">
+                    <div class="mini-article-subhead">
+                      Article
+                      <time datetime="2018-11-23"> November 23, 2018 </time>
+                    </div>
+                    <h2 class="">
+                      <a
+                        href="https://css-tricks.com/the-current-state-of-styling-scrollbars/"
+                        class="article-card-header read-article"
+                      >
+                        The Current State of Styling Scrollbars
+                      </a>
+                    </h2>
+                  </div>
+                </header>
+                <div class="mini-article-meta">
+                  <div class="mini-article-byline">
+                    <div class="author-avatar">
+                      <a
+                        class="author-name"
+                        href="https://css-tricks.com/author/chriscoyier/"
+                      >
+                        <img
+                          alt=""
+                          src="https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=80&amp;d=retro&amp;r=pg"
+                          srcset="
+                            https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=160&amp;d=retro&amp;r=pg 2x
+                          "
+                          class="avatar avatar-80 photo"
+                          height="80"
+                          width="80"
+                        />
+                      </a>
+                      <!-- <svg class="half-circle" width="80px" height="80px">
+                        <use xlink:href="#half-circle"></use>
+                      </svg> -->
+                    </div>
+                    <div class="author-name-area">
+                      <div class="author-name-prefix">Author</div>
+                      <a
+                        class="author-name"
+                        href="https://css-tricks.com/author/chriscoyier/"
+                      >
+                        Chris Coyier
+                      </a>
+                    </div>
+                  </div>
+                  <div class="tags">
+                    <a href="https://css-tricks.com/tag/scrollbars/" rel="tag"
+                      >scrollbars</a
+                    >
+                  </div>
+                </div>
+              </article>
+              <article
+                class="mini-card module module-article article"
+                id="mini-post-278949"
+              >
+                <header class="mini-article-card-header">
+                  <div class="mini-article-card-title">
+                    <div class="mini-article-subhead">
+                      Article
+                      <time datetime="2018-11-28"> November 28, 2018 </time>
+                    </div>
+                    <h2 class="">
+                      <a
+                        href="https://css-tricks.com/front-end-developers-have-to-manage-the-loading-experience/"
+                        class="article-card-header read-article"
+                      >
+                        Front-End Developers Have to Manage the Loading
+                        Experience
+                      </a>
+                    </h2>
+                  </div>
+                </header>
+                <div class="mini-article-meta">
+                  <div class="mini-article-byline">
+                    <div class="author-avatar">
+                      <a
+                        class="author-name"
+                        href="https://css-tricks.com/author/chriscoyier/"
+                      >
+                        <img
+                          alt=""
+                          src="https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=80&amp;d=retro&amp;r=pg"
+                          srcset="
+                            https://secure.gravatar.com/avatar/8081b26e05bb4354f7d65ffc34cbbd67?s=160&amp;d=retro&amp;r=pg 2x
+                          "
+                          class="avatar avatar-80 photo"
+                          height="80"
+                          width="80"
+                        />
+                      </a>
+                      <!-- <svg class="half-circle" width="80px" height="80px">
+                        <use xlink:href="#half-circle"></use>
+                      </svg> -->
+                    </div>
+                    <div class="author-name-area">
+                      <div class="author-name-prefix">Author</div>
+                      <a
+                        class="author-name"
+                        href="https://css-tricks.com/author/chriscoyier/"
+                      >
+                        Chris Coyier
+                      </a>
+                    </div>
+                  </div>
+                  <div class="tags">
+                    <a href="https://css-tricks.com/tag/performance/" rel="tag"
+                      >performance</a
+                    >
+                  </div>
+                </div>
+              </article>
             </div>
-         </div>
-
-
-
-          
-
-
-
+          </div>
         </div>
-  
 
-      <!-- <section class="hero">
+        <!-- <section class="hero">
         <h1>(Scroll if You dare)</h1>
       </section> -->
-     
-      <section class="sticky colorSwitch" data-color="transparent">
-        <div class="titles">
-          <div class="title first-title">
-            <h1 class="title-1"></h1>
-            <h1 class="title-2"></h1>
-            <h1 class="title-3"></h1>
-          </div>
-          <div class="title snap-point">
-            <h1 class="title-1">1/Adobe<br/>Supabase/Mango</h1>
-            <h1 class="title-2">2/Adobe<br/>Supabase/Mango</h1>
-            <h1 class="title-3">3/Adobe<br/>Supabase/Mango</h1>
-          </div>
-          <div class="title">
-            <h1 class="title-1">ReactNative/Expo<br/>Streamlit/Flask</h1>
-            <h1 class="title-2">ReactNative/Expo<br/>Streamlit/Flask</h1>
-            <h1 class="title-3">ReactNative/Expo<br/>Streamlit/Flask</h1>
-          </div>
-          <div class="title last-title snap-point">
-            <h1 class="title-1">Nextjs/js/Prism/WP<br/>GSAP/Framer motion/ThreeJS</h1>
-            <h1 class="title-2">Nextjs/js/Prism/WP<br/>GSAP/Framer motion/ThreeJS</h1>
-            <h1 class="title-3">Nextjs/js/Prism/WP<br/>GSAP/Framer motion/ThreeJS</h1>
-          </div>
-        </div>
-        <div class="images"></div>
-      </section>
-      <section class="outro">
-        <div class="outro-content">
-          <div class="outro-text">
-            <h2 style="color: var(--creamy-orange) !important;">Let's Create Something Amazing</h2>
-            <p style="color: var(--creamy-light) !important;">Whether you're looking to collaborate on a project or just want to connect, I'd love to hear from you.</p>
-            
-            <div class="social-links">
-              <a href="https://bsky.app" class="social-btn" target="_blank">BlueSky</a>
-              <a href="https://x.com" class="social-btn" target="_blank">X</a>
-              <a href="https://daily.dev" class="social-btn" target="_blank">daily.dev</a>
-              <a href="https://github.com" class="social-btn" target="_blank">GitHub</a>
+
+        <section class="sticky colorSwitch" data-color="transparent">
+          <div class="titles">
+            <div class="title first-title">
+              <h1 class="title-1"></h1>
+              <h1 class="title-2"></h1>
+              <h1 class="title-3"></h1>
+            </div>
+            <div class="title snap-point">
+              <h1 class="title-1">1/Adobe<br />Supabase/Mango</h1>
+              <h1 class="title-2">2/Adobe<br />Supabase/Mango</h1>
+              <h1 class="title-3">3/Adobe<br />Supabase/Mango</h1>
+            </div>
+            <div class="title">
+              <h1 class="title-1">ReactNative/Expo<br />Streamlit/Flask</h1>
+              <h1 class="title-2">ReactNative/Expo<br />Streamlit/Flask</h1>
+              <h1 class="title-3">ReactNative/Expo<br />Streamlit/Flask</h1>
+            </div>
+            <div class="title last-title snap-point">
+              <h1 class="title-1">
+                Nextjs/js/Prism/WP<br />GSAP/Framer motion/ThreeJS
+              </h1>
+              <h1 class="title-2">
+                Nextjs/js/Prism/WP<br />GSAP/Framer motion/ThreeJS
+              </h1>
+              <h1 class="title-3">
+                Nextjs/js/Prism/WP<br />GSAP/Framer motion/ThreeJS
+              </h1>
             </div>
           </div>
-          
-          <button class="email-btn" onclick="window.location.href='mailto:your@email.com'">
-            Get in Touch
-          </button>
-        </div>
-      </section>
+          <div class="images"></div>
+        </section>
+        <section class="outro">
+          <div class="outro-content">
+            <div class="outro-text">
+              <h2 style="color: var(--creamy-orange) !important">
+                Let's Create Something Amazing
+              </h2>
+              <p style="color: var(--creamy-light) !important">
+                Whether you're looking to collaborate on a project or just want
+                to connect, I'd love to hear from you.
+              </p>
+
+              <div class="social-links">
+                <a href="https://bsky.app" class="social-btn" target="_blank"
+                  >BlueSky</a
+                >
+                <a href="https://x.com" class="social-btn" target="_blank">X</a>
+                <a href="https://daily.dev" class="social-btn" target="_blank"
+                  >daily.dev</a
+                >
+                <a href="https://github.com" class="social-btn" target="_blank"
+                  >GitHub</a
+                >
+              </div>
+            </div>
+            <button
+              class="email-btn"
+              onclick="window.location.href='mailto:your@email.com'"
+            >
+              Get in Touch
+            </button>
+          </div>
+        </section>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/debug.addIndicators.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.min.js"></script>
+        <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+        <script src="script.js" type="module"></script>
+        <script src="script1.js"></script>
+        <script src="./svg-animation/svg-animation/src/svg.js"></script>
+        <script
+          src="https://cdn.skypack.dev/tweakpane@4.0.4"
+          type="module"
+        ></script>
+        <script src="scripttest.js" type="module"></script>
+        <script src="scrollerHandler.js"></script>
+      </div>
     </div>
-    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-    <script src="script.js" type="module"></script>
-    <script src="script1.js"></script>
-    <script src="https://cdn.skypack.dev/tweakpane@4.0.4"></script>
-<script type="module" src="scripttest.js"></script>
-<!-- Add this before closing body tag, after Lenis initialization -->
-<script src="scrollerHandler.js"></script>
   </body>
 </html>
