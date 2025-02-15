@@ -112,7 +112,7 @@ b {
   position: absolute;
   width: 100%;
   z-index: 1000;
-  bottom: 0;
+  bottom: 2vh;
   display: flex;
   flex-direction: row;
   align-items: center;
