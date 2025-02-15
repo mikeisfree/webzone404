@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&display=swap");
+
+root {
+  --stroke-width: 2px;
+}
+
 a {
   color: #fff;
   text-decoration: none;
@@ -314,8 +320,6 @@ time {
   position: relative;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&display=swap");
-
 @layer normalize, base, demo, snapping;
 
 @layer snapping {
@@ -413,8 +417,6 @@ time {
     top: 1rem;
     bottom: 1rem;
     right: 1rem;
-    /* pointer-events: none; */
-    /* height: 100%; */
     width: calc(var(--radius) * 2px);
     overflow: visible !important;
     z-index: 2;
@@ -435,7 +437,7 @@ time {
     -ms-overflow-style: none;
   }
 
-  .scroller path {
+  .scroller .svgScroller path {
     stroke-width: calc(var(--stroke-width) * 1px);
   }
 

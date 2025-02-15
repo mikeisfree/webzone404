@@ -526,6 +526,7 @@ section {
 
 .sticky {
   background-color: transparent;
+  z-index: -1;
 }
 
 .titles {

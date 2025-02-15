@@ -161,53 +161,53 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Match each title-3 with its corresponding snap point
-        const snapPoints = [];
-        const currentSnapPoint = snapPoints[index];
-        const isAtCurrentSnapPoint =
-          Math.abs(self.progress - currentSnapPoint) < 0.05;
+        // const snapPoints = [];
+        // const currentSnapPoint = snapPoints[index];
+        // const isAtCurrentSnapPoint =
+        //   Math.abs(self.progress - currentSnapPoint) < 0.05;
 
         // Debug logs
-        console.log(`Title ${index + 1}:`, {
-          progress: self.progress,
-          currentSnapPoint: snapPoints[index],
-          isAtCurrentSnapPoint:
-            Math.abs(self.progress - snapPoints[index]) < 0.05,
-          charsLength: chars.length,
-        });
+        // console.log(`Title ${index + 1}:`, {
+        //   progress: self.progress,
+        //   currentSnapPoint: snapPoints[index],
+        //   isAtCurrentSnapPoint:
+        //     Math.abs(self.progress - snapPoints[index]) < 0.05,
+        //   charsLength: chars.length,
+        // });
 
         // Simplified animation logic
-        if (Math.abs(self.progress - snapPoints[index]) < 0.05) {
-          console.log(`Activating title-3 at index ${index}`);
+        // if (Math.abs(self.progress - snapPoints[index]) < 0.05) {
+        //   console.log(`Activating title-3 at index ${index}`);
 
-          // First make visible
-          title3.style.visibility = "visible";
-          title3.style.opacity = "1";
+        // First make visible
+        // title3.style.visibility = "visible";
+        // title3.style.opacity = "1";
 
-          // Then animate chars
-          gsap.to(chars, {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            stagger: 0.03,
-            ease: "back.out(1.7)",
-            overwrite: true,
-          });
-        } else {
-          console.log(`Deactivating title-3 at index ${index}`);
+        // Then animate chars
+        //   gsap.to(chars, {
+        //     opacity: 1,
+        //     y: 0,
+        //     duration: 0.5,
+        //     stagger: 0.03,
+        //     ease: "back.out(1.7)",
+        //     overwrite: true,
+        //   });
+        // } else {
+        //   console.log(`Deactivating title-3 at index ${index}`);
 
-          gsap.to(chars, {
-            opacity: 0,
-            y: 50,
-            duration: 0.3,
-            stagger: 0.02,
-            ease: "power2.in",
-            overwrite: true,
-            onComplete: () => {
-              title3.style.visibility = "hidden";
-              title3.style.opacity = "0";
-            },
-          });
-        }
+        //   gsap.to(chars, {
+        //     opacity: 0,
+        //     y: 50,
+        //     duration: 0.3,
+        //     stagger: 0.02,
+        //     ease: "power2.in",
+        //     overwrite: true,
+        //     onComplete: () => {
+        //       title3.style.visibility = "hidden";
+        //       title3.style.opacity = "0";
+        //     },
+        //   });
+        // }
 
         // Keep title-3 centered
         gsap.set(title3, {
@@ -270,5 +270,5 @@ gsap.delayedCall(0.1, () => {
   document.body.style.height = "100vh";
 
   // Optional: If you want to allow scrolling inside specific elements
-  gsap.set(".scrollable", { overflowY: "auto", height: "100vh" });
+  // gsap.set(".scrollable", { overflowY: "auto", height: "100vh" });
 });

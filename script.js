@@ -20,7 +20,7 @@ function init() {
   const body = document.body;
   // const gradientBcg = document.querySelector(".gradient-overlay");
   const cta = document.querySelector(".cta");
-  const propertycard = document.querySelectorAll(".scroller");
+  const propertycard = document.querySelector(".scroller");
 
   // Lenis initialization
   const lenis = new Lenis();
@@ -90,16 +90,16 @@ function init() {
   );
 
   // Bottom text animation
-  gsap.from(bottomText, {
-    scrollTrigger: {
-      trigger: ".bottom-section",
-      start: "top center",
-      toggleActions: "play none none reverse",
-    },
-    opacity: 0,
-    y: -20,
-    duration: 0.8,
-  });
+  // gsap.from(bottomText, {
+  //   scrollTrigger: {
+  //     trigger: ".bottom-section",
+  //     start: "top center",
+  //     toggleActions: "play none none reverse",
+  //   },
+  //   opacity: 0,
+  //   y: -20,
+  //   duration: 0.8,
+  // });
 
   // Overlay text dissapear
   gsap.to(videoOverlay, {
@@ -132,7 +132,7 @@ function init() {
     opacity: 0,
     y: -200,
     duration: 0.35,
-    easeing: "power3.out",
+    ease: "power3.inOut",
   }),
     gsap.to(successText, {
       scrollTrigger: {
@@ -160,9 +160,9 @@ function init() {
       toggleActions: "play none none reverse",
       markers: false,
     },
-    scrub: 1,
+    // scrub: 1,
     scale: 0.7,
-    easeing: "power3.out",
+    ease: "power3.inOut",
   });
 
   gsap.to(propertycard, {
