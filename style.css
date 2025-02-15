@@ -110,7 +110,7 @@ b {
 
 .cta {
   width: 100%;
-  position: absolute;
+  height: max-content;
   z-index: 1000;
   bottom: 0;
   display: flex;
@@ -118,7 +118,7 @@ b {
   align-items: center;
   justify-content: space-around;
   gap: 60%;
-  height: 12vh;
+  height: 16vh;
   font-family: "HelveticaNeueThin", sans-serif;
 }
 
