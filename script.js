@@ -176,19 +176,62 @@ function init() {
     zIndex: 0,
     yPercent: -15,
     stagger: 0.2,
+    overwrite: "auto",
   });
 
-  // Outro animations
-  gsap.from(".outro-text h2", {
-    scrollTrigger: {
-      trigger: ".outro-content",
-      start: "top 80%",
-      toggleActions: "play none none reverse",
-    },
-    y: 50,
-    opacity: 0,
-    duration: 1,
-  });
+  // Section 3 Dissapear
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: ".sticky-container",
+        start: "bottom 0",
+        toggleActions: "play none none reverse",
+        markers: true,
+      },
+    })
+    .to([propertycard, ".popular-articles"], {
+      y: -200,
+      duration: 1,
+      stagger: 0.2,
+      ease: "power2.inOut", // Added smooth easing
+    })
+    .to(
+      [propertycard, ".popular-articles"],
+      {
+        opacity: 0,
+        duration: 0.8, // Increased duration
+        stagger: 0.2,
+        ease: "power2.out", // Added smooth easing
+      },
+      "-=0.5" // Start opacity animation before the y-translation finishes
+    ),
+    // Section 4 appear
+
+    // gsap.to(".cloneable", {
+    //   scrollTrigger: {
+    //     trigger: ".sticky-container",
+    //     start: "bottom -50%",
+    //     toggleActions: "play none none reverse",
+    //     scrub: 1,
+    //     duration: 1,
+    //   },
+    //   visibility: "visible",
+    //   opacity: 1,
+    //   ease: "power3.inOut",
+    //   overwrite: "auto",
+    // });
+
+    // Outro animations
+    gsap.from(".outro-text h2", {
+      scrollTrigger: {
+        trigger: ".outro-content",
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+      y: 50,
+      opacity: 0,
+      duration: 1,
+    });
 
   gsap.from(".outro-text p", {
     scrollTrigger: {
@@ -216,3 +259,84 @@ function init() {
 
 // Run initialization when DOM is ready
 document.addEventListener("DOMContentLoaded", init);
+
+// Move this from the bottom of script1.js to your main animation timeline in script.js
+const rotationTimeline = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".sticky",
+    start: "top top",
+    end: `+=${window.innerHeight * 5}px`, // Match the main scroll duration
+    scrub: 1,
+    onUpdate: (self) => {
+      const rotation = self.progress * 360;
+      gsap.set(".sticky", {
+        "--angle": `${rotation}deg`,
+      });
+    },
+  },
+});
+
+const width = window.innerWidth;
+const height = window.innerHeight - 10;
+
+// Create SVG and set viewbox so that
+// we zoom into the point 0,0
+const canvas = SVG().addTo(".sticky").size(width, height);
+
+function perspective(i, p) {
+  return width / (0.8 * (i - p));
+}
+
+const aspect = width / height;
+const cx = width / 2;
+const cy = height / 2;
+
+canvas.ellipse({ x: cx, y: cy, rx: 2, ry: 2 });
+
+const n = 50;
+for (let i = 0; i < n; i++) {
+  // Go through the rects
+  const width = perspective(i, 0);
+  const height = width / aspect;
+
+  // Work out the
+  const lastWidth = perspective(i, 1);
+  const lastHeight = lastWidth / aspect;
+
+  // Go through the
+  const rect = canvas
+    .rect({ x: cx - width / 2, y: cy - height / 2, width, height })
+    .stroke("#c4471d")
+    .fill("none")
+    .opacity(0.4 * Math.cos((i / n) * Math.PI));
+
+  rect
+    .animate()
+    .ease((t) => t)
+    .loop()
+    .x(cx - lastWidth / 2)
+    .y(cy - lastHeight / 2)
+    .width(lastWidth)
+    .height(lastHeight);
+
+  rect
+    .animate(3000, 50 * i, "now")
+    .ease((t) => t)
+    .loop()
+    .rotate(180);
+}
+
+const movingBubble = document.getElementById("moving-bubble");
+
+gsap
+  .timeline({
+    scrollTrigger: {
+      trigger: ".outro",
+      start: "top bottom",
+      toggleActions: "play none none reverse",
+    },
+  })
+  .to(movingBubble, {
+    scale: 10,
+    ease: "power2.inOut", // Added smooth easing
+  });
