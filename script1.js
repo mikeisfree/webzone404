@@ -1,17 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize a new Lenis instance for smooth scrolling
   const lenis = new Lenis();
-
-  // Synchronize Lenis scrolling with GSAP's ScrollTrigger plugin
   lenis.on("scroll", ScrollTrigger.update);
 
-  // Add Lenis's requestAnimationFrame (raf) method to GSAP's ticker
-  // This ensures Lenis's smooth scroll animation updates on each GSAP tick
   gsap.ticker.add((time) => {
-    lenis.raf(time * 1000); // Convert time from seconds to milliseconds
+    lenis.raf(time * 1000);
   });
 
-  // Disable lag smoothing in GSAP to prevent any delay in scroll animations
   gsap.ticker.lagSmoothing(0);
 
   const cardPositions = [
@@ -65,7 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Split text utility function
   function splitText(element) {
     const text = element.textContent;
     element.textContent = "";
@@ -77,11 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return span;
     });
   }
-
-  // Split all title-3 text
-  document.querySelectorAll(".title-3").forEach((title) => {
-    splitText(title);
-  });
 
   ScrollTrigger.create({
     trigger: ".sticky",
@@ -102,30 +90,20 @@ document.addEventListener("DOMContentLoaded", () => {
       const isAtEdge = self.progress <= 0 || self.progress >= 1;
 
       document.querySelectorAll(".title").forEach((titleContainer, index) => {
-        // Calculate element's center position relative to viewport
         const rect = titleContainer.getBoundingClientRect();
         const elementCenterX = rect.left + rect.width / 2;
         const viewportWidth = window.innerWidth;
         const viewportCenter = viewportWidth / 2;
-
-        // Calculate distance from center as a percentage (0 to 1)
         const distanceFromCenter =
           Math.abs(elementCenterX - viewportCenter) / viewportWidth;
-
-        // Calculate opacity
-        // Fully visible (1) within 40% of center
-        // Fades out to 0 between 40% and 50% distance
         const opacity = Math.max(
           0,
-          1 - Math.max(0, distanceFromCenter - 0.1) / 0.4
+          1 - Math.max(0, distanceFromCenter - 0.2) / 0.3
         );
 
         const title1 = titleContainer.querySelector(".title-1");
         const title2 = titleContainer.querySelector(".title-2");
-        const title3 = titleContainer.querySelector(".title-3");
-        const chars = [...title3.querySelectorAll(".char")]; // Convert NodeList to Array
 
-        // Apply opacity to only title1 and title2
         gsap.to([title1, title2], {
           opacity: opacity,
           duration: 0.2,
@@ -159,61 +137,6 @@ document.addEventListener("DOMContentLoaded", () => {
             overwrite: "auto",
           });
         }
-
-        // Match each title-3 with its corresponding snap point
-        // const snapPoints = [];
-        // const currentSnapPoint = snapPoints[index];
-        // const isAtCurrentSnapPoint =
-        //   Math.abs(self.progress - currentSnapPoint) < 0.05;
-
-        // Debug logs
-        // console.log(`Title ${index + 1}:`, {
-        //   progress: self.progress,
-        //   currentSnapPoint: snapPoints[index],
-        //   isAtCurrentSnapPoint:
-        //     Math.abs(self.progress - snapPoints[index]) < 0.05,
-        //   charsLength: chars.length,
-        // });
-
-        // Simplified animation logic
-        // if (Math.abs(self.progress - snapPoints[index]) < 0.05) {
-        //   console.log(`Activating title-3 at index ${index}`);
-
-        // First make visible
-        // title3.style.visibility = "visible";
-        // title3.style.opacity = "1";
-
-        // Then animate chars
-        //   gsap.to(chars, {
-        //     opacity: 1,
-        //     y: 0,
-        //     duration: 0.5,
-        //     stagger: 0.03,
-        //     ease: "back.out(1.7)",
-        //     overwrite: true,
-        //   });
-        // } else {
-        //   console.log(`Deactivating title-3 at index ${index}`);
-
-        //   gsap.to(chars, {
-        //     opacity: 0,
-        //     y: 50,
-        //     duration: 0.3,
-        //     stagger: 0.02,
-        //     ease: "power2.in",
-        //     overwrite: true,
-        //     onComplete: () => {
-        //       title3.style.visibility = "hidden";
-        //       title3.style.opacity = "0";
-        //     },
-        //   });
-        // }
-
-        // Keep title-3 centered
-        gsap.set(title3, {
-          xPercent: -50,
-          x: 0,
-        });
       });
 
       cards.forEach((card, index) => {
@@ -231,44 +154,5 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
     },
-    id: "mainScroll",
   });
-
-  // Simplified snap configuration
-  ScrollTrigger.create({
-    trigger: ".sticky",
-    start: "bottom bottom",
-    end: `+=${window.innerHeight * 5}px`,
-    snap: {
-      snapTo: [],
-      duration: 2,
-      // ease: "power1.inOut",
-      inertia: false,
-    },
-  });
-});
-
-// const tl = gsap.timeline({
-//   scrollTrigger: {
-//     trigger: ".last-title",
-//     start: "bottom bottom",
-//     pin: true,
-//     scrub: 1,
-//     end: "top top",
-//     markers: false,
-//   },
-// });
-
-// tl.from(".outro", {
-//   yPercent: -100,
-//   ease: "none",
-// });
-
-gsap.delayedCall(0.1, () => {
-  document.documentElement.style.overflowY = "hidden"; // Ensure no unwanted scroll
-  document.documentElement.style.height = "100vh"; // Ensure full viewport
-  document.body.style.height = "100vh";
-
-  // Optional: If you want to allow scrolling inside specific elements
-  // gsap.set(".scrollable", { overflowY: "auto", height: "100vh" });
 });
