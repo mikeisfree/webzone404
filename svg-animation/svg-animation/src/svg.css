@@ -1,0 +1,198 @@
+.abs {
+  position: absolute;
+  height: 6500px;
+  width: 100%;
+  max-width: 100vw;
+  max-height: 6500px;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+  /* /* background: linear-gradient(to bottom, #3e6386, #264868); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#GJ_logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 7000px;
+}
+
+.st0 {
+  clip-path: url(#SVGID_2_);
+  filter: url(#glow);
+  fill: none;
+  stroke: url(#pipe-gradient);
+  stroke-width: 20;
+  stroke-linecap: round;
+}
+
+#moving-bubble {
+  fill: url(#pipe-gradient);
+  filter: url(#glow);
+  transform-origin: center;
+  opacity: 1;
+  pointer-events: all;
+  cursor: pointer;
+  mix-blend-mode: color-burn;
+}
+
+#moving-bubble:hover {
+  fill: green;
+  filter: url(#glow);
+  transform-origin: center;
+  opacity: 1;
+  mix-blend-mode: color-burn;
+}
+
+.story {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  z-index: 0;
+}
+
+/* .story::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background-color: black;
+} */
+
+.content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-content {
+  overflow: hidden;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(36, 31, 31, 1) 0%,
+    rgba(36, 31, 31, 1) 32%,
+    rgba(74, 71, 70, 1) 100%
+  );
+  color: #fff;
+  text-align: center;
+}
+
+.vignette {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 0px 0px 150px 20px black;
+  mix-blend-mode: multiply;
+  -webkit-animation: vignette-anim 3s infinite; /* Safari 4+ */
+  -moz-animation: vignette-anim 3s infinite; /* Fx 5+ */
+  -o-animation: vignette-anim 3s infinite; /* Opera 12+ */
+  animation: vignette-anim 3s infinite; /* IE 10+, Fx 29+ */
+}
+
+.noise {
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+.line {
+  position: absolute;
+  height: 100%;
+  width: 1px;
+  opacity: 0.1;
+  background-color: #000;
+}
+
+.titleCont {
+  position: relative;
+}
+
+.main-title {
+  padding: 0.3em 1em 0.25em;
+  font-weight: 400;
+  font-size: 40px;
+  color: white;
+  font-family: "Bellefair", serif;
+  position: relative;
+  line-height: 1.3;
+  /* white-spacing: ; */
+}
+
+.overTitle {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.dot {
+  width: 3px;
+  height: 2px;
+  background-color: white;
+  position: absolute;
+  opacity: 0.3;
+}
+
+@-webkit-keyframes vignette-anim {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+@-moz-keyframes vignette-anim {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+@-o-keyframes vignette-anim {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+@keyframes vignette-anim {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}

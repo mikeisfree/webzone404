@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="./textSplitter.js"></script>
+    <script src="./imgtooltips/imagesloaded.pkgd.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./base.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/ljn4kgu.css" />
+    <script>
+      document.documentElement.className = "js";
+    </script>
+    <script src="./imgtooltips/demo.js"></script>
+    <title>Beliefs</title>
+  </head>
+  <body class="loading">
+    <style>
+      @font-face {
+        font-family: "BebasNeue";
+        src: url("../../../fonts/BebasNeue-Regular.ttf"), format(".ttf");
+      }
+
+      :root {
+        --creamy-light: #fffdf1;
+        --creamy-dark: #8f6962;
+        /* --creamy-orange: #c4471d; */
+        --creamy-orange: #ff4d4d;
+        --creamy-orange-opacity: rgba(196, 71, 29, 0.541);
+        --transparent: #ffffff00;
+        --primary-accent: #ffce00;
+        --secondary-accent: #fe4880;
+        --dark: #212121;
+        --light: #f3f3f3;
+        --primary: #ff4d4d;
+        --secondary: #1e1e1e;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "BebasNeue", sans-serif;
+        font-size: clamp(1rem, 2vw, 3rem);
+        color: #000000;
+        background-color: var(--primary);
+        line-height: 120%;
+        letter-spacing: -0.025em;
+      }
+
+      .beliefs {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 0.5em;
+        padding-top: 3rem;
+      }
+
+      .beliefs p:hover {
+        color: var(--creamy-light);
+        background-color: var(--dark);
+      }
+
+
+      .content span {
+        font-size: clamp(2rem, 3vw, 2rem);
+      }
+
+      .content {
+        gap:2rem;
+      }
+
+      a {
+        cursor: pointer;
+        color: var(--creamy-light)
+      }
+
+      .block {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .block p {
+        font-size: clamp(4rem, 5vw, 4rem);
+        line-height: 120%;
+      }
+
+
+      .block__title,
+      .block__link {
+        position: relative;
+        width: 250px;
+        color: var(--dark);
+        text-decoration: none;
+        z-index: 10000;
+      }
+
+      .content .content-text {
+        font-size: clamp(6rem, 7vw, 6rem);
+        ;
+      }
+
+      .hover-reveal {
+        position: absolute;
+        height: 150px;
+        bottom: 50%;
+        right: 0;
+        opacity: 1;
+        z-index: 9999;
+      }
+
+      .hover-reveal__inner {
+        /* overflow: hidden; */
+        width: 250px;
+        height: 150px;
+      }
+
+      .hover-reveal__img {
+        max-width: 250px;
+        height: 150px;
+        position: relative;
+        background-size: cover;
+      }
+    </style>
+
+    <div class="beliefs">
+   
+        <div class="content">
+
+          <div class="content__text">
+            All you have to learn here is how to have
+            <a class="content__text-link" data-img="img/42.jpg" data-fx="1"
+              >fun</a
+            >. It's almost like something out of a
+            <a class="content__text-link" data-img="img/40.jpg" data-fx="2"
+              >fairytale</a
+            >
+          </div>
+        </div>
+    
+      <section class="content">
+        <h2 class="content__title">The Twwins Intergalactic Tour 2045</h2>
+        <ul class="list">
+          <li class="list__item">
+            <span class="list__item-col hover-effect hover-effect--bg-south">Solaris Dome</span>
+            <span class="list__item-col hover-effect hover-effect--bg-south">Planet Vespera</span>
+            <span class="list__item-col hover-effect hover-effect--bg-south">2045-01-21</span>
+          </li>
+          <li class="list__item">
+            <span class="list__item-col hover-effect hover-effect--bg-south">N7 Amphitheater</span>
+            <span class="list__item-col hover-effect hover-effect--bg-south">Exo-Planet Zyra</span>
+            <span class="list__item-col hover-effect hover-effect--bg-south">2045-02-14</span>
+          </li>
+          <li class="list__item">
+            <span class="list__item-col hover-effect hover-effect--bg-south">Titan Orbit Arena</span>
+            <span class="list__item-col hover-effect hover-effect--bg-south">Planet Elara</span>
+            <span class="list__item-col hover-effect hover-effect--bg-south">2045-03-30</span>
+          </li>
+          <li class="list__item">
+            <span class="list__item-col hover-effect hover-effect--bg-south">Io Lunar Hall</span>
+            <span class="list__item-col hover-effect hover-effect--bg-south">Moon Xanthe</span>
+            <span class="list__item-col hover-effect hover-effect--bg-south">2045-04-25</span>
+          </li>
+          <li class="list__item">
+            <span class="list__item-col hover-effect hover-effect--bg-south">Helios Grand Stage</span>
+            <span class="list__item-col hover-effect hover-effect--bg-south">Asteroid B-612</span>
+            <span class="list__item-col hover-effect hover-effect--bg-south">2045-05-19</span>
+          </li>
+          <li class="list__item">
+            <span class="list__item-col hover-effect hover-effect--bg-south">AE Concert Hall</span>
+            <span class="list__item-col hover-effect hover-effect--bg-south">Delta X9</span>
+            <span class="list__item-col hover-effect hover-effect--bg-south">2045-06-10</span>
+          </li>
+          <li class="list__item">
+            <span class="list__item-col hover-effect hover-effect--bg-south">Nova Prime Pavilion</span>
+            <span class="list__item-col hover-effect hover-effect--bg-south">Planet Ganymede</span>
+            <span class="list__item-col hover-effect hover-effect--bg-south">2045-07-04</span>
+          </li>
+          <li class="list__item">
+            <span class="list__item-col hover-effect hover-effect--bg-south">Galaxy's Edge Theater</span>
+            <span class="list__item-col hover-effect hover-effect--bg-south">Orion Station N3</span>
+            <span class="list__item-col hover-effect hover-effect--bg-south">2045-08-21</span>
+          </li>
+          <li class="list__item">
+            <span class="list__item-col hover-effect hover-effect--bg-south">Starlight Auditorium</span>
+            <span class="list__item-col hover-effect hover-effect--bg-south">Moon Rhea</span>
+            <span class="list__item-col hover-effect hover-effect--bg-south">2045-09-10</span>
+          </li>
+        </ul>
+      </section>
+      <div class="content__text">
+        All you have to learn here is how to have
+        <a class="content__text-link" data-img="img/42.jpg" data-fx="1"
+          >fun</a
+        >
+  
+      <div class="block" data-fx="12">
+
+      <p>The intention behind the <a class="content__text-link" data-img="./img/14.jpg" data-fx="1"> shapes</a> the experience</p>
+
+      <p>
+        Craft is dedication and respect for the invisible work. A personal
+        commitment to excellence
+      </p>
+
+      <p>Pure editorial design sucks</p>
+
+      <p>Pure terminal design sucks</p>
+
+      <p>
+        It’s not the design process itself; it’s your reflective practices that
+        will guide the right path forward
+      </p>
+
+      <p>
+        Quality in software means fulfilling its purpose without unnecessary
+        distractions
+      </p>
+
+      <p>Poor design manifests as slowness</p>
+
+      <p>Aesthetics should serve functionality and elevate each interaction</p>
+
+      <p>Inspiration is a state and it depends on your sensitive antenna</p>
+
+      <p>
+        System thinking is essential for consciously breaking the rules and
+        discovering the magic
+      </p>
+
+      <p>Mass production sacrifices creativity, identity and intention</p>
+
+      <p>
+        Good design is all about making other designers feel like idiots because
+        that idea wasn’t theirs
+      </p>
+
+      <p>Your design standards are limited by your references</p>
+
+      <p>
+        Excellence in design lies in attending to every detail with intention
+      </p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <!-- SplitType for text manipulation: https://github.com/lukePeavey/SplitType -->
+    <script src="https://unpkg.com/split-type"></script>
+
+    <!-- Scripts for the effect -->
+    <script type="module" src="./index.js"></script>
+    <script type="module" src="./text-animator.js"></script>
+    <script src="./imgtooltips/charming.min.js"></script>
+
+    <script src="./imgtooltips/TweenMax.min.js"></script>
+  </body>
+</html>

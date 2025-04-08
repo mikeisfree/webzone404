@@ -1,0 +1,6 @@
+# Folders
+tools/
+.vscode/
+# Files
+data.js
+*.zip

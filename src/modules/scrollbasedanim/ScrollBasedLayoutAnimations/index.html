@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tools | Skills</title>
+    <meta name="webzone" content="Tools" />
+    <meta name="keywords" content="" />
+    <meta name="#" content="#" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" href="https://use.typekit.net/cch1nog.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./src/modules/scrollbasedanim/ScrollBasedLayoutAnimations/css/base.css"
+    />
+    <script>
+      document.documentElement.className = "js";
+      var supportsCssVars = function () {
+        var e,
+          t = document.createElement("style");
+        return (
+          (t.innerHTML = "root: { --tmp-var: bold; }"),
+          document.head.appendChild(t),
+          (e = !!(
+            window.CSS &&
+            window.CSS.supports &&
+            window.CSS.supports("font-weight", "var(--tmp-var)")
+          )),
+          t.parentNode.removeChild(t),
+          e
+        );
+      };
+      supportsCssVars() ||
+        alert(
+          "Please view this demo in a modern browser that supports CSS Variables."
+        );
+    </script>
+  </head>
+
+  <body class="loading">
+    <div class="MOJA1 gallery-wrap gallery-wrap--dense">
+      <div
+        class="titles gallery gallery--stack gallery--stack-inverse gallery--stack-dark"
+        id="gallery-4"
+      >
+        <div
+          class="gallery__item tooltip-trigger"
+          data-tooltip="Card"
+          style="
+            background-image: url(./src/modules/scrollbasedanim/ScrollBasedLayoutAnimations/img/33.jpg);
+          "
+        ></div>
+        <div
+          class="gallery__item"
+          style="
+            background-image: url(./src/modules/scrollbasedanim/ScrollBasedLayoutAnimations/img/34.jpg);
+          "
+        ></div>
+        <div
+          class="gallery__item"
+          style="
+            background-image: url(./src/modules/scrollbasedanim/ScrollBasedLayoutAnimations/img/35.jpg);
+          "
+        ></div>
+        <div
+          class="gallery__item"
+          style="
+            background-image: url(./src/modules/scrollbasedanim/ScrollBasedLayoutAnimations/img/36.jpg);
+          "
+        ></div>
+        <div
+          class="gallery__item"
+          style="
+            background-image: url(./src/modules/scrollbasedanim/ScrollBasedLayoutAnimations/img/37.jpg);
+          "
+        ></div>
+        <div
+          class="gallery__item"
+          style="
+            background-image: url(./src/modules/scrollbasedanim/ScrollBasedLayoutAnimations/img/38.jpg);
+          "
+        ></div>
+        <div class="caption">
+          <p>
+            AI-generated art captivates with varied creations, sometimes
+            senseless, yet impressively enigmatic.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="./src/modules/scrollbasedanim/ScrollBasedLayoutAnimations/js/gsap.min.js"></script>
+    <script src="./src/modules/scrollbasedanim/ScrollBasedLayoutAnimations/js/ScrollTrigger.min.js"></script>
+    <script src="./src/modules/scrollbasedanim/ScrollBasedLayoutAnimations/js/lenis.min.js"></script>
+    <script
+      type="module"
+      src="./src/modules/scrollbasedanim/ScrollBasedLayoutAnimations/js/index.js"
+    ></script>
+  </body>
+</html>

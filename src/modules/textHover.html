@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>texthover component</title>
+  </head>
+  <body>
+    <style>
+      body {
+        background: black;
+      }
+      .galleryOrbit img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .containerOrbit {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .gallery {
+        pointer-events: none;
+      }
+
+      .itemOrbit {
+        pointer-events: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 70px;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        background: #b0b0b0;
+        margin: 10px;
+        opacity: 0.5;
+      }
+
+      .hero-copy {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .hero-copy p {
+        font-size: clamp(1rem, 3vw, 2rem);
+        color: gray;
+        text-align: center;
+        letter-spacing: -0.04em;
+        line-height: 110%;
+      }
+
+      .hero-copy p span {
+        cursor: crosshair;
+        font-family: "BebasNeueRegular";
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+      }
+
+      .hero-copy p span:hover {
+        color: white;
+      }
+    </style>
+
+    <div class="hero-copy">
+      <p>
+        The forest is <span>silent</span> as the wind whispers through the
+        trees. Moonlight casts a glow over the winding <span>path</span>. A
+        distant howl breaks the eerie <span>calm</span> of the night. Shadows
+        dance under the flickering <span>stars</span>, shifting with the breeze.
+      </p>
+    </div>
+
+    <div class="containerOrbit">
+      <div class="galleryOrbit">
+        <div class="itemOrbit"></div>
+        <div class="itemOrbit"></div>
+        <div class="itemOrbit"></div>
+        <div class="itemOrbit"></div>
+        <div class="itemOrbit"></div>
+        <div class="itemOrbit"></div>
+        <div class="itemOrbit"></div>
+        <div class="itemOrbit"></div>
+        <div class="itemOrbit"></div>
+        <div class="itemOrbit"></div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+    <script>
+      window.onload = function () {
+        const itemsOrbit = document.querySelectorAll(".itemOrbit");
+        const containerOrbit = document.querySelector(".containerOrbit");
+        const spansOrbit = document.querySelectorAll(".hero-copy p span");
+        const numberOfItems = itemsOrbit.length;
+        const angleIncrement = (2 * Math.PI) / numberOfItems;
+        const radius = 300;
+
+        let currentAngle = 0;
+        let isMouseOverSpan = false;
+        let targetX = 0;
+        let targetY = 0;
+        let currentX = 0;
+        let currentY = 0;
+
+        const basePath = "../../image/";
+        itemsOrbit.forEach((itemOrbit, index) => {
+          let img = document.createElement("img");
+          img.src = basePath + "img" + (index + 1) + ".jpg";
+          img.alt = "Image " + (index + 1);
+          itemOrbit.appendChild(img);
+        });
+
+        const updateGallery = (mouseX, mouseY, show = true) => {
+          // Center the orbit around the mouse position
+          targetX = mouseX;
+          targetY = mouseY;
+
+          // Smooth transition with lower interpolation factor
+          currentX += (targetX - currentX) * 0.05;
+          currentY += (targetY - currentY) * 0.05;
+
+          itemsOrbit.forEach(function (itemOrbit, index) {
+            const angle = currentAngle + index * angleIncrement;
+            const x = radius * Math.cos(angle);
+            const y = radius * Math.sin(angle);
+
+            gsap.to(itemOrbit, {
+              x: x,
+              y: y,
+              opacity: show ? 1 : 0,
+              duration: 0.5,
+              ease: "power1.out",
+            });
+          });
+        };
+
+        spansOrbit.forEach((span) => {
+          span.addEventListener("mouseenter", (e) => {
+            isMouseOverSpan = true;
+            updateGallery(e.clientX, e.clientY, true);
+          });
+
+          span.addEventListener("mouseleave", (e) => {
+            if (!isMouseOverSpan) {
+              targetX = e.clientX - 800;
+              targetY = e.clientY - 450;
+            }
+          });
+
+          // span.addEventListener("mouseleave", () => {
+          //   isMouseOverSpan = false;
+          //   updateGallery(0, 0, false);
+          // });
+        });
+
+        gsap.ticker.add(() => {
+          currentAngle += 0.005;
+          if (currentAngle > 2 * Math.PI) {
+            currentAngle -= 2 * Math.PI;
+          }
+          if (isMouseOverSpan) {
+            updateGallery(targetX, targetY, true);
+          }
+        });
+
+        document.querySelectorAll(".hero-copy span").forEach((span) => {
+          span.addEventListener("mouseenter", () => {
+            span.parentNode.style.color = "#545454";
+          });
+
+          span.addEventListener("mouseleave", () => {
+            span.parentNode.style.color = "#fff";
+          });
+        });
+        itemsOrbit.forEach((itemOrbit, index) => {
+          let img = document.createElement("img");
+          img.src = basePath + "img" + (index + 1) + ".jpg";
+          img.alt = "Image " + (index + 1);
+          itemOrbit.appendChild(img);
+          console.log("Image loaded:", img.src);
+        });
+      };
+    </script>
+  </body>
+</html>
